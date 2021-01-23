@@ -1,0 +1,11 @@
+{
+  "name": "server_chat",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "ws": "^4.0.0"
+  },
+  "scripts": {
+    "start": "node ./chat_server/app.js"
+  }
+}
