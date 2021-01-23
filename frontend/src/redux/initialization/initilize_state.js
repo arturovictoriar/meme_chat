@@ -16,6 +16,6 @@ const store = createStore(
 // Setup the sockect with dispatch function and the username
 const socket = setupSocket(store.dispatch, username)
 // Initilize the saga middleware using the socket and the usename
-sagaMiddleware.run(handleNewMessage, {socket, username})
+sagaMiddleware.run(handleNewMessage, { socket, username })
 // export the store
 export default store;
