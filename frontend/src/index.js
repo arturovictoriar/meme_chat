@@ -11,11 +11,8 @@ import store from './redux/initialization/initilize_state';
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
-	</Provider>, 
+	</Provider>,
 	document.getElementById('root')
-	);
+);
 // Call the register Service Worker
 registerServiceWorker();
-
-
-
