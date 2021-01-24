@@ -4,10 +4,11 @@ import { addUser, messageReceived, populateUsersList } from '../redux/actions'
 
 /**
  * Conect redux saga with the sockets
- * @param {*} dispatch trigger
- * @param {*} username user name
+ * @param {Function} dispatch trigger
+ * @param {String} username user name
  */
 const setupSocket = (dispatch, username) => {
+	// replace for heroku const socket = new WebSocket('wss://backend-chating.herokuapp.com')
 	const socket = new WebSocket('ws://localhost:8989')
 	/**
 	 * on a new user send the username to the server
