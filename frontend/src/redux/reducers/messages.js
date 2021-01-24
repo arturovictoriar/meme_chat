@@ -14,7 +14,8 @@ const messages = (state = [], action) => {
 				{
 					message: action.message,
 					author: action.author,
-					id: action.id
+					id: action.id,
+					date: action.date
 				}
 			])
 		default:
