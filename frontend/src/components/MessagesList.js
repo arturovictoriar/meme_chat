@@ -9,16 +9,17 @@ import Message from './Message'
  * @param {*} param0 state parameters
  */
 const MessagesList = ({ messages }) => (
-	<section id="messages-list">
-		<ul>
+	<section id="all-messages">
+		<section id="messages-list">
 			{messages.map(message => (
 				<Message
 					key={message.id}
 					{...message}
 				/>
 			))}
-		</ul>
+		</section>
 	</section>
+	
 )
 // Connect the component with redux
 MessagesList.propTypes = {
@@ -27,6 +28,7 @@ MessagesList.propTypes = {
 			id: propTypes.number.isRequired,
 			message: propTypes.string.isRequired,
 			author: propTypes.string.isRequired,
+			date: propTypes.string.isRequired
 		}).isRequired
 	).isRequired
 }

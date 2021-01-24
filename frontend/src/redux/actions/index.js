@@ -9,11 +9,12 @@ let nextUserId = 0
  * @param {string} message message to be store
  * @param {string} author author of the message
  */
-export const addMessage = (message, author) => ({
+export const addMessage = (message, author, date) => ({
 	type: types.ADD_MESSAGE,
 	id: nextMessageId++,
 	message,
-	author
+	author,
+	date
 })
 
 /**
@@ -31,11 +32,12 @@ export const addUser = name => ({
  * @param {string} message message to be store
  * @param {string} author author of the message
  */
-export const messageReceived = (message, author) => ({
+export const messageReceived = (message, author, date) => ({
 	type: types.MESSAGE_RECEIVED,
 	id: nextMessageId++,
 	message,
-	author
+	author,
+	date
 })
 
 /**

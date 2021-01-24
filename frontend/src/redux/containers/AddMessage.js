@@ -9,8 +9,8 @@ import { addMessage } from '../actions'
  * @param {Function} dispatch conect props with dispatcher state
  */
 const mapDispatchToProps = dispatch => ({
-  dispatch: (message, author) => {
-    dispatch(addMessage(message, author))
+  dispatch: (message, author, date) => {
+    dispatch(addMessage(message, author, date))
   }
 })
 // Updating the new message in the state app for AddMessage component
