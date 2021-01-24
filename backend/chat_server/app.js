@@ -1,7 +1,7 @@
 // Import WebSocket library
 const WebSocket = require('ws');
-// Set the server in the por 8989 of this machine
-const wss = new WebSocket.Server({ port: 8989 });
+// Set the server in the por 8989 or ENV port of this machine
+const wss = new WebSocket.Server({ port: process.env.PORT || 8989 });
 // Create the users list
 const users = [];
 
