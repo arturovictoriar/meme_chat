@@ -3,8 +3,8 @@ import React from 'react'
 import propTypes from 'prop-types'
 
 /**
- * Text input user message
- * @param {Object} props state with user and message data
+ * User message text input
+ * @param {Object} props state with user, message data and the youtube search
  */
 const AddMessage = (props) => {
 	const youtube_command = /^\/youtube /gm;
@@ -12,21 +12,31 @@ const AddMessage = (props) => {
 	let last_input = "/youtube";
 	let input;
 
+	/**
+	 * Handle the command for searching in youtube
+	 * @param {Object} e event
+	 */
 	const handleChangeYoutubeSearch = (e) => {
+		// if the user set the command youtube search, set the mode send video
 		if (youtube_command.test(input.value) === true) {
 			input.value = prefix_search;
 			props.dispatch_mode(true);
 		}
+		// if the user doesnt want to send a video, unset the mode send video
 		else if (props.status === true && input.value.length < prefix_search.length) {
 			input.value = last_input;
 			props.dispatch_mode(false);
 			props.dispatch_get([]);
 		}
+		// if the user is in send video mode, save the words to search
 		else if (props.status === true && input.value.length >= prefix_search.length) {
 			props.dispatch_search(input.value.slice(prefix_search.length - 1,));
 		}
 	}
 
+	/**
+	 * Search a given video on youtube and save the results
+	 */
 	const searchYoutubeVideo = () => {
 		let ysearch = "";
 
@@ -45,11 +55,17 @@ const AddMessage = (props) => {
 				});
 	}
 
+	/**
+	 * Send a message or a video from the input text box
+	 * @param {Object} e event
+	 */
 	const sendMessages = (e) => {
 		if (e.key === 'Enter') {
+			// if status mode is youtube command, search a given video
 			if (props.status === true && props.memeSearch.length > 0) {
 				searchYoutubeVideo();
 			}
+			// else, send the given message
 			else {
 				props.dispatch_message(input.value, 'Me', 'Hoy');
 				input.value = '';
@@ -57,6 +73,10 @@ const AddMessage = (props) => {
 		}
 	}
 
+	/**
+	 * if the user select a video, send it to the other users
+	 * @param {Object} video information of the videos
+	 */
 	const sendVideo = (video) => {
 		const videoEmbedded = "/embeddedYoutubeVideo:" + video.id.videoId;
 		props.dispatch_mode(false);
@@ -68,6 +88,7 @@ const AddMessage = (props) => {
 
 	return (
 		<section id="new-message">
+			{/* Input text box */}
 			<input
 				onKeyPress={sendMessages}
 				onChange={handleChangeYoutubeSearch}
@@ -76,9 +97,10 @@ const AddMessage = (props) => {
 					input = node
 				}}
 			/>
-
+			{/* Videos Suggestion */}
 			<div id={props.status === true ? "show_suggestions" : "hide_suggestions"}>
 				<ul>
+					{/* print all the videos found */}
 					{props.videos.map((video, i) => (
 						video.error ? <li>{video.error}</li> :
 							<li key={i} onClick={() => sendVideo(video)}>
@@ -90,7 +112,7 @@ const AddMessage = (props) => {
 		</section>
 	)
 }
-// Connect the component with redux
+// Connect the component with redux and notify me if a parameter not matches its type
 AddMessage.propTypes = {
 	dispatch_message: propTypes.func.isRequired,
 	dispatch_search: propTypes.func.isRequired,

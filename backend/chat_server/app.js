@@ -1,13 +1,13 @@
 // Import WebSocket library
 const WebSocket = require('ws');
-// Set the server in the por 8989 or ENV port of this machine
+// Set the server in the port on 8989 or ENV port of this machine
 const wss = new WebSocket.Server({ port: process.env.PORT || 8989 });
 // Create the users list
 const users = [];
 
 /**
- * Broadcast a data sent by other user
- * @param {string} data data user to broadcast
+ * Broadcast a data sent by user
+ * @param {Object} data data user to broadcast
  * @param {InstanceType} ws Web socket
  */
 const broadcast = (data, ws) => {
@@ -19,7 +19,7 @@ const broadcast = (data, ws) => {
 };
 /**
  * On web socket server connection
- * @param {InstanceType} ws web socket
+ * @param {InstanceType} ws web socket instace
  */
 wss.on('connection', (ws) => {
 	let index;
