@@ -7,7 +7,7 @@ import { MessagesList } from "../redux/containers/MessagesList"
 import { AddMessage } from "../redux/containers/AddMessage"
 
 /**
- * Main component
+ * Main component, chat components
  */
 const App = () => {
   return (
