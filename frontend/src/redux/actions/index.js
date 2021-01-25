@@ -48,3 +48,18 @@ export const populateUsersList = users => ({
 	type: types.USERS_LIST,
 	users
 })
+
+export const searchVideo = (memeSearch) => ({
+	type: types.SEARCH_VIDEO,
+	memeSearch
+})
+
+export const youtubeMode = (status) => ({
+	type: types.YOUTUBE_MODE,
+	status
+})
+
+export const getVideos = (videos) => ({
+	type: types.GET_VIDEOS,
+	videos
+})
