@@ -6,11 +6,12 @@ import Message from './Message'
 
 /**
  * List of users messages
- * @param {*} param0 state parameters
+ * @param {Object} param0 state parameters for messages
  */
 const MessagesList = ({ messages }) => (
 	<section id="all-messages">
 		<section id="messages-list">
+			{/* Print all the messages sended */}
 			{messages.map(message => (
 				<Message
 					key={message.id}
@@ -21,7 +22,7 @@ const MessagesList = ({ messages }) => (
 	</section>
 	
 )
-// Connect the component with redux
+// Connect the component with redux and notify me if a parameter not matches its type
 MessagesList.propTypes = {
 	messages: propTypes.arrayOf(
 		propTypes.shape({

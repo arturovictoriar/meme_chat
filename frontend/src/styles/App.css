@@ -31,7 +31,7 @@ body {
     margin-left: 0px;
     border-top: 1px solid #3f3f3f;
 }
-/*Style for text messages*/
+/*Styles for text messages*/
 #all-messages {
     width: 100%;
     position: relative;
@@ -58,10 +58,10 @@ body {
     height: 100%;
 }
 
+/*Styles for youtube sugestions*/
 #hide_suggestions {
     display: none;
 }
-
 #show_suggestions {
     display: initial;
 }

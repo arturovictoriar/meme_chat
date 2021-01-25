@@ -3,15 +3,17 @@ import * as types from '../constants/ActionTypes'
 
 /**
  * Reducer for users
- * @param {Object} state App state
- * @param {Object} action Action to do in the redux store
+ * @param {Array} state App users state
+ * @param {Object} action Action to do in the App state
  */
 const users = (state = [], action) => {
 	switch (action.type) {
+		/* Update the a new user */
 		case types.ADD_USER:
 			return state.concat([
 				{ name: action.name, id: action.id }
 			])
+		/* Update the User list */
 		case types.USERS_LIST:
 			return action.users
 		default:
