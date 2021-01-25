@@ -57,3 +57,11 @@ body {
     border-right: 1px solid #3f3f3f;
     height: 100%;
 }
+
+#hide_suggestions {
+    display: none;
+}
+
+#show_suggestions {
+    display: initial;
+}
