@@ -3,18 +3,20 @@ import * as types from '../constants/ActionTypes'
 
 /**
  * Reducer for messages
- * @param {Object} state App state
- * @param {object} action Action to do in the redux store
+ * @param {Array} state App messages state
+ * @param {Object} action Action to do in the App state
  */
 const messages = (state = [], action) => {
 	switch (action.type) {
+		/* Update the messages recieved and sent */
 		case types.ADD_MESSAGE:
 		case types.MESSAGE_RECEIVED:
 			return state.concat([
 				{
 					message: action.message,
 					author: action.author,
-					id: action.id
+					id: action.id,
+					date: action.date
 				}
 			])
 		default:
