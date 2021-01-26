@@ -1,23 +1,19 @@
 // Import Libraries
 import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 // Import Modules
-import '../styles/App.css';
-import { Sidebar } from "../redux/containers/Sidebar"
-import { MessagesList } from "../redux/containers/MessagesList"
-import { AddMessage } from "../redux/containers/AddMessage"
+import {Chat} from '../redux/containers/Chat';
+import LogIn from './LogIn';
 
 /**
  * Main component, chat components
  */
 const App = () => {
   return (
-    <div id="container">
-      <Sidebar />
-      <section id="main">
-        <MessagesList />
-        <AddMessage />
-      </section>
-    </div>
+    <Router>
+      <Route path="/" exact component={LogIn} />
+      <Route path="/chat" component={Chat} />
+    </Router>
   );
 }
 // export the main component
