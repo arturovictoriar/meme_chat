@@ -43,11 +43,11 @@ body {
 }
 #entry_message {
     float: left;
-    clear: left;
+    clear: both;
 }
 #own_message {
     float: right;
-    clear: right;
+    clear: both;
 }
 
 /*Style for user availables*/
