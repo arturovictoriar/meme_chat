@@ -9,7 +9,7 @@ import { addUser, messageReceived, populateUsersList } from '../redux/actions'
  */
 const setupSocket = (dispatch, username) => {
 	// replace for heroku const socket = new WebSocket('wss://backend-chating.herokuapp.com')
-	const socket = new WebSocket('ws://localhost:8989')
+	const socket = new WebSocket('wss://backend-chating.herokuapp.com')
 	/**
 	 * on a new user send the username to the server
 	 */
