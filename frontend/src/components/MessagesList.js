@@ -26,7 +26,7 @@ const MessagesList = ({ messages }) => (
 MessagesList.propTypes = {
 	messages: propTypes.arrayOf(
 		propTypes.shape({
-			id: propTypes.number.isRequired,
+			id: propTypes.string.isRequired,
 			message: propTypes.string.isRequired,
 			author: propTypes.string.isRequired,
 			date: propTypes.string.isRequired

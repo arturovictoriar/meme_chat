@@ -1,6 +1,7 @@
 // Import libraries
 import React from 'react'
 import propTypes from 'prop-types'
+import {userName} from '../redux/initialization/initialize_socket'
 
 /**
  * User message
@@ -11,7 +12,7 @@ const Message = ({ message, author, date }) => {
 	const youtube_command = new RegExp(youtube_embedded, "gm");
 
 	return (
-		<span id={author === 'Me' ? "own_message" : "entry_message"}>
+		<span id={(author === 'Me' || userName === author) ? "own_message" : "entry_message"}>
 			<p>
 				{author} {date} :
 			</p>

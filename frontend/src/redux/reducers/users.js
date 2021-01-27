@@ -8,11 +8,6 @@ import * as types from '../constants/ActionTypes'
  */
 const users = (state = [], action) => {
 	switch (action.type) {
-		/* Update the a new user */
-		case types.ADD_USER:
-			return state.concat([
-				{ name: action.name, id: action.id }
-			])
 		/* Update the User list */
 		case types.USERS_LIST:
 			return action.users

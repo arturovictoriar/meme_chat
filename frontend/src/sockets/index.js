@@ -1,6 +1,5 @@
 // Import modules
-import *  as types from '../redux/constants/ActionTypes'
-import { addUser, messageReceived, populateUsersList } from '../redux/actions'
+import { messageReceived, populateUsersList, uppdateMessages } from '../redux/actions'
 import io from "socket.io-client";
 
 /**
@@ -28,7 +27,11 @@ const setupSocket = (dispatch, username) => {
 	 * @param {String} event new change
 	 */
 	socket.on('receiveMessage', (data, callback) => {
-		dispatch(messageReceived(data.message, data.author, data.date))
+		dispatch(messageReceived(data.message, data.author, data.date, data.id))
+	})
+
+	socket.on('updateMessages', (data, callback) => {
+		dispatch(uppdateMessages(data.messages))
 	})
 
 	socket.on('usersList', (data, callback) => {
