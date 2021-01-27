@@ -1,14 +1,14 @@
 // Import modules
-import { messageReceived, populateUsersList, uppdateMessages } from '../redux/actions'
+import { messageReceived, populateUsersList, uppdateMessages } from '../redux/actions';
 import io from "socket.io-client";
 
 /**
- * Conect redux with the sockets for updating the entry and outer messages
+ * Conect redux with the sockets for updating the entry and outer data
  * @param {Function} dispatch trigger to save the data in redux
  * @param {String} username user name
  */
 const setupSocket = (dispatch, username) => {
-	// replace for heroku const socket = new WebSocket('wss://backend-chating.herokuapp.com')
+	// replace for heroku 'backend-chating.herokuapp.com'
 	const ENDPOINT = 'http://localhost:5000';
 	const socket = io(ENDPOINT);
 	/**
@@ -19,24 +19,29 @@ const setupSocket = (dispatch, username) => {
 			if (error) {
 				alert(error);
 			}
-		})
-	})
+		});
+	});
 
 	/**
-	 * On a new change evaluate and set the state
-	 * @param {String} event new change
+	 * on a receiveMessage event, update the messages state
 	 */
 	socket.on('receiveMessage', (data, callback) => {
 		dispatch(messageReceived(data.message, data.author, data.date, data.id))
-	})
+	});
 
+	/**
+	 * on a updateMessages event, update the messages state
+	 */
 	socket.on('updateMessages', (data, callback) => {
 		dispatch(uppdateMessages(data.messages))
-	})
+	});
 
+	/**
+	 * on a usersList event, update the users state
+	 */
 	socket.on('usersList', (data, callback) => {
 		dispatch(populateUsersList(data.users))
-	})
+	});
 
 	return socket
 }

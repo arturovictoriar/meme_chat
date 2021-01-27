@@ -1,6 +1,6 @@
 // Import libraries
-import React from 'react'
-import propTypes from 'prop-types'
+import React from 'react';
+import propTypes from 'prop-types';
 
 /**
  * User message text input
@@ -8,13 +8,16 @@ import propTypes from 'prop-types'
  */
 const AddMessage = (props) => {
 	const youtube_command = /^\/youtube /gm;
-	const prefix_search = "$meme_video: "
-	const myUser = "Me"
+	const prefix_search = "$meme_video: ";
+	const myUser = "Me";
 	let last_input = "/youtube";
 	let input;
 
+	/**
+	 * get the current date in a string data type
+	 */
 	const dateNow = () => {
-		const d = new Date()
+		const d = new Date();
 		return (d.toUTCString())
 	}
 
@@ -46,7 +49,7 @@ const AddMessage = (props) => {
 	const searchYoutubeVideo = () => {
 		let ysearch = "";
 
-		ysearch = props.memeSearch.replace(" ", "%20")
+		ysearch = props.memeSearch.replace(" ", "%20");
 		fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${ysearch}&type=video&videoEmbeddable=true&key=AIzaSyBEwL4HbjmYB7kqJYZTaWAtXNSpk7pWPsk`).then(
 			response => {
 				if (!response.ok) {

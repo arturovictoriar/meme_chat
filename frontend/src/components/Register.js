@@ -1,7 +1,12 @@
+// import libraries
 import React, { useState } from 'react';
+// import modules
 import LogIn from './LogIn';
 import SignIn from './SignIn';
 
+/**
+ * User register component, store the login and the signin component
+ */
 const Register = () => {
     const [isLogIn, setIsLogIn] = useState(true);
     return (
@@ -14,4 +19,5 @@ const Register = () => {
     );
 }
 
+// export the register component
 export default Register;
