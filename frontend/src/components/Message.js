@@ -14,7 +14,7 @@ const Message = ({ message, author, date }) => {
 	return (
 		<span id={(author === 'Me' || userName === author) ? "own_message" : "entry_message"}>
 			<p>
-				{author} {date} :
+				{author}:
 			</p>
 			{/* If it was send a video, print it, else print the messagge */}
 			{ (youtube_command.test(message) === true) ?
@@ -27,6 +27,9 @@ const Message = ({ message, author, date }) => {
 					{message}
 				</p>
 			}
+			<p>
+				{date}
+			</p>
 			<br />
 		</span>
 	)
