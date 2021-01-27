@@ -20,7 +20,7 @@ const Sidebar = ({ users }) => (
 Sidebar.propTypes = {
 	users: propTypes.arrayOf(
 		propTypes.shape({
-			id: propTypes.number.isRequired,
+			id: propTypes.string.isRequired,
 			name: propTypes.string.isRequired,
 		}).isRequired
 	).isRequired
