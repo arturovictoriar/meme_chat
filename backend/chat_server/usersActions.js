@@ -1,4 +1,4 @@
-const users = [];
+const users = require('./connectedUsers');
 
 const addUser = ({ id, username, room }) => {
   username = username.trim().toLowerCase();

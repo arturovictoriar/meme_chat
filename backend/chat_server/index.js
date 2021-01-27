@@ -2,10 +2,12 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const cors = require('cors');
+const bodyParser = require("body-parser");
 
-const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./usersActions');
+const allUsers = require('../Api/allUsers');
 
-const router = require('./router');
+const router = require('../Api/router');
 
 const app = express();
 const server = http.createServer(app);
@@ -16,6 +18,7 @@ const io = socketio(server, {
   }
 });
 
+app.use(bodyParser.json());
 app.use(cors());
 app.use(router);
 
@@ -32,9 +35,6 @@ io.on('connect', (socket) => {
 
     socket.join(user.room);
 
-    socket.emit('message', { admin, text: `${user.name}, welcome to room ${user.room}.` });
-
-    // socket.broadcast.to(user.room).emit('message', { admin, text: `${user.name} has joined!` });
     socket.broadcast.to(user.room).emit('usersList', { admin, users: getUsersInRoom(user.room) });
 
     socket.emit('usersList', { admin, users: getUsersInRoom(user.room) });
@@ -49,13 +49,12 @@ io.on('connect', (socket) => {
   })
 
   socket.on('disconnect', () => {
-    const room = "meme";
     const admin = "admin";
     const user = removeUser(socket.id);
 
     if (user) {
-      // socket.to(user.room).emit('message', { admin , text: `${user.name} has left.` });
       socket.broadcast.to(user.room).emit('usersList', { admin, users: getUsersInRoom(user.room) });
+      allUsers[user.name].connected = false;
     }
   })
 

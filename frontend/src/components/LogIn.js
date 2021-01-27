@@ -1,31 +1,30 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import sha256 from 'crypto-js/sha256';
 import enc from 'crypto-js/enc-base64'
 import { getInChat } from '../redux/initialization/initialize_socket';
 
-export const users = { 
-    Arturo: {pw: sha256("12345").toString(enc), connected: false}, 
-    Nicolai: {pw: sha256("12345").toString(enc), connected: false}
-};
 
 const LogIn = () => {
+    const history = useHistory();
     let inputNick;
     let inputPassword;
 
-    const checkNickPassword = (nick, password) => {
-        if (nick in users && users[nick].connected === false &&
-            users[nick].pw === password) {
-            users[nick].connected = true;
-            return (true);
-        }
-        return (false);
-    }
+    const checkUser = async (e) => {
+        const name = inputNick.value;
+        const pw = sha256(inputPassword.value).toString(enc);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({name, pw})
+        };
 
-    const checkUser = (e) => {
-        const checkI = checkNickPassword(inputNick.value, sha256(inputPassword.value).toString(enc));
-        if (inputNick.value.length > 5 && checkI) {
-            getInChat(inputNick.value);
+        const res = await fetch('http://localhost:5000/logIn', requestOptions);
+        let permission = await res.json();
+
+        if (name.length > 5 && permission.ok) {
+            getInChat(name);
+            history.push('/chat');
             return;
         }
         e.preventDefault();
@@ -51,9 +50,7 @@ const LogIn = () => {
                         }}
                     />
                 </div>
-                <Link onClick={checkUser} to={`/chat`}>
-                    <button type="submit">Log In</button>
-                </Link>
+                <button type="submit" onClick={checkUser}>Log In</button>
             </div>
         </div>
     )
