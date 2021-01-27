@@ -23,7 +23,6 @@ const LogIn = () => {
     }
 
     const checkUser = (e) => {
-        console.log(users)
         const checkI = checkNickPassword(inputNick.value, sha256(inputPassword.value).toString(enc));
         if (inputNick.value.length > 5 && checkI) {
             getInChat(inputNick.value);
