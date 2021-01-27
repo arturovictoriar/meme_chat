@@ -9,8 +9,14 @@ import propTypes from 'prop-types'
 const AddMessage = (props) => {
 	const youtube_command = /^\/youtube /gm;
 	const prefix_search = "$meme_video: "
+	const myUser = "Me"
 	let last_input = "/youtube";
 	let input;
+
+	const dateNow = () => {
+		const d = new Date()
+		return (d.toUTCString())
+	}
 
 	/**
 	 * Handle the command for searching in youtube
@@ -67,7 +73,7 @@ const AddMessage = (props) => {
 			}
 			// else, send the given message
 			else {
-				props.dispatch_message(input.value, 'Me', 'Hoy');
+				props.dispatch_message(input.value, myUser, dateNow());
 				input.value = '';
 			}
 		}
@@ -82,7 +88,7 @@ const AddMessage = (props) => {
 		props.dispatch_mode(false);
 		props.dispatch_get([]);
 		props.dispatch_search("");
-		props.dispatch_message(videoEmbedded, 'Me', 'Hoy');
+		props.dispatch_message(videoEmbedded, myUser, dateNow());
 		input.value = '';
 	}
 
