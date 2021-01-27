@@ -61,7 +61,9 @@ io.on('connect', (socket) => {
 
     if (user) {
       socket.broadcast.to(user.room).emit('usersList', { admin, users: getUsersInRoom(user.room) });
-      allUsers[user.name].connected = false;
+      if (user.name in allUsers) {
+        allUsers[user.name].connected = false;
+      }
     }
   })
 

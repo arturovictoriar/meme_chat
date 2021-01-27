@@ -9,4 +9,12 @@ const checkNickPassword = (nick, password) => {
     return (false);
 }
 
-module.exports = checkNickPassword;
+const createUser = (nick, password) => {
+    if (nick in users) {
+        return (false);
+    }
+    users[nick] = { pw: password, connected: false };
+    return (true);
+}
+
+module.exports = {checkNickPassword, createUser};
