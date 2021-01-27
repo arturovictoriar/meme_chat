@@ -1,14 +1,14 @@
 // Import Libraries
 import React from 'react';
-import propTypes from 'prop-types'
+import propTypes from 'prop-types';
 // Import Modules
 import '../styles/App.css';
-import { Sidebar } from "../redux/containers/Sidebar"
-import { MessagesList } from "../redux/containers/MessagesList"
-import { AddMessage } from "../redux/containers/AddMessage"
+import { Sidebar } from "../redux/containers/Sidebar";
+import { MessagesList } from "../redux/containers/MessagesList";
+import { AddMessage } from "../redux/containers/AddMessage";
 
 /**
- * Main component, chat components
+ * Chat component
  */
 const Chat = ({users}) => {
   return (

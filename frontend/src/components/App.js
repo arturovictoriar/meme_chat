@@ -6,7 +6,7 @@ import {Chat} from '../redux/containers/Chat';
 import Register from './Register';
 
 /**
- * Main component, chat components
+ * Main component, chat and register components
  */
 const App = () => {
   return (
@@ -16,5 +16,6 @@ const App = () => {
     </Router>
   );
 }
+
 // export the main component
 export default App;
