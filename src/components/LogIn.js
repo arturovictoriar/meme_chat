@@ -28,7 +28,7 @@ const LogIn = ({setIsLogIn}) => {
             body: JSON.stringify({ name, pw })
         };
         // Look for permission in the API
-        const res = await fetch('http://localhost:5000/logIn', requestOptions);
+        const res = await fetch('https://backend-chating.herokuapp.com/logIn', requestOptions);
         let permission = await res.json();
         // if the user have the permission, allow it to get in the chat server
         if (name.length > 5 && permission.ok) {

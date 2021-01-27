@@ -30,7 +30,7 @@ const SignIn = ({ setIsLogIn }) => {
             body: JSON.stringify({ name, pw })
         };
         // Ask to the server to create a new user with the given data
-        const res = await fetch('http://localhost:5000/SignIn', requestOptions);
+        const res = await fetch('https://backend-chating.herokuapp.com/SignIn', requestOptions);
         let created = await res.json();
         // if the user was created, alert to the user
         if (created.ok === true) {

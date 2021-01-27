@@ -9,7 +9,7 @@ import io from "socket.io-client";
  */
 const setupSocket = (dispatch, username) => {
 	// replace for heroku 'backend-chating.herokuapp.com'
-	const ENDPOINT = 'http://localhost:5000';
+	const ENDPOINT = 'https://backend-chating.herokuapp.com';
 	const socket = io(ENDPOINT);
 	/**
 	 * on a new user send the username to the server
