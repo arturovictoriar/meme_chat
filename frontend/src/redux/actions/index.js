@@ -1,9 +1,7 @@
+import { v4 as uuidv4 } from 'uuid';
 // Import all from Action Types module
 import * as types from '../constants/ActionTypes'
-// setup the message and user id in the app
-let nextMessageId = 0
-let nextUserId = 0
-
+import {userName} from '../initialization/initialize_socket'
 /**
  * Action when adding a message
  * @param {string} message message to be store
@@ -12,20 +10,10 @@ let nextUserId = 0
  */
 export const addMessage = (message, author, date) => ({
 	type: types.ADD_MESSAGE,
-	id: nextMessageId++,
+	id: userName.concat("#", uuidv4()),
 	message,
 	author,
 	date
-})
-
-/**
- * Action when adding a user
- * @param {string} name username
- */
-export const addUser = name => ({
-	type: types.ADD_USER,
-	id: nextUserId++,
-	name
 })
 
 /**
@@ -34,12 +22,17 @@ export const addUser = name => ({
  * @param {string} author author of the message
  * @param {string} date date of the message
  */
-export const messageReceived = (message, author, date) => ({
+export const messageReceived = (message, author, date, id) => ({
 	type: types.MESSAGE_RECEIVED,
-	id: nextMessageId++,
+	id,
 	message,
 	author,
 	date
+})
+
+export const uppdateMessages = (messages) => ({
+	type: types.UPDATE_MESSAGES,
+	messages
 })
 
 /**
