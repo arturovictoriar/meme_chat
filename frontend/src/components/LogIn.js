@@ -5,7 +5,7 @@ import enc from 'crypto-js/enc-base64'
 import { getInChat } from '../redux/initialization/initialize_socket';
 
 
-const LogIn = () => {
+const LogIn = ({setIsLogIn}) => {
     const history = useHistory();
     let inputNick;
     let inputPassword;
@@ -16,7 +16,7 @@ const LogIn = () => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({name, pw})
+            body: JSON.stringify({ name, pw })
         };
 
         const res = await fetch('http://localhost:5000/logIn', requestOptions);
@@ -30,28 +30,31 @@ const LogIn = () => {
         e.preventDefault();
     }
 
+    const changeToSingIn = (e) => {
+        setIsLogIn(false);
+    }
+
     return (
         <div >
-            <div >
-                <h1 >Log In</h1>
-                <div>
-                    <input
-                        placeholder="Name"
-                        type="text"
-                        ref={(node) => {
-                            inputNick = node
-                        }}
-                    />
-                    <input
-                        placeholder="Password"
-                        type="password"
-                        ref={(node) => {
-                            inputPassword = node
-                        }}
-                    />
-                </div>
-                <button type="submit" onClick={checkUser}>Log In</button>
+            <h1 >Log In</h1>
+            <div>
+                <input
+                    placeholder="Name"
+                    type="text"
+                    ref={(node) => {
+                        inputNick = node
+                    }}
+                />
+                <input
+                    placeholder="Password"
+                    type="password"
+                    ref={(node) => {
+                        inputPassword = node
+                    }}
+                />
             </div>
+            <button type="submit" onClick={checkUser}>Log In</button>
+            <button type="submit" onClick={changeToSingIn}>Sign In</button>
         </div>
     )
 }

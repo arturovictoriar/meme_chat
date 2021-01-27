@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const checkNickPassword = require('./validUsers')
+const {checkNickPassword, createUser} = require('./validUsers')
 
 router.get("/", (req, res) => {
   res.send({ response: "Server is up and running." }).status(200);
@@ -19,7 +19,7 @@ router.post('/logIn', function (req, res) {
 // define the about route
 router.post('/signIn', function (req, res) {
   const body = req.body;
-  if (checkNickPassword(body.name, body.pw)) {
+  if (createUser(body.name, body.pw)) {
     return (res.send({ok: true}).status(201))
   }
   return (res.send({ok: false}).status(400))
