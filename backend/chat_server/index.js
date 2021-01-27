@@ -6,8 +6,8 @@ const bodyParser = require("body-parser");
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./usersActions');
 const allUsers = require('../Api/allUsers');
-
 const router = require('../Api/router');
+const messages = require('./storedMessages');
 
 const app = express();
 const server = http.createServer(app);
@@ -38,6 +38,7 @@ io.on('connect', (socket) => {
     socket.broadcast.to(user.room).emit('usersList', { admin, users: getUsersInRoom(user.room) });
 
     socket.emit('usersList', { admin, users: getUsersInRoom(user.room) });
+    socket.emit('updateMessages', { admin, messages });
 
     callback();
   });
@@ -45,6 +46,12 @@ io.on('connect', (socket) => {
 
   socket.on('sendMessage', (action, callback) => {
     const user = getUser(socket.id);
+    messages.push({
+      id: action.id,
+      message: action.message,
+      author: action.author,
+      date: action.date
+    });
     socket.broadcast.to(user.room).emit('receiveMessage', action);
   })
 
