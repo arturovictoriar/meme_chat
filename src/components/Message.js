@@ -1,6 +1,7 @@
 // Import libraries
 import React from 'react'
 import propTypes from 'prop-types'
+import {userName} from '../redux/initialization/initialize_socket'
 
 /**
  * User message
@@ -11,21 +12,24 @@ const Message = ({ message, author, date }) => {
 	const youtube_command = new RegExp(youtube_embedded, "gm");
 
 	return (
-		<span>
-			<span id={author === 'Me' ? "own_message" : "entry_message"}>
-				{author} {date} :
-			</span>
+		<span id={(author === 'Me' || userName === author) ? "own_message" : "entry_message"}>
+			<p>
+				{author}:
+			</p>
 			{/* If it was send a video, print it, else print the messagge */}
 			{ (youtube_command.test(message) === true) ?
 				<iframe width="300" height="200"
 					src={`https://www.youtube.com/embed/${message.slice(youtube_embedded.length - 1,)}`}
-					id={author === 'Me' ? "own_message" : "entry_message"}>
+				>
 				</iframe>
 				:
-				<span id={author === 'Me' ? "own_message" : "entry_message"}>
+				<p >
 					{message}
-				</span>
+				</p>
 			}
+			<p>
+				{date}
+			</p>
 			<br />
 		</span>
 	)
