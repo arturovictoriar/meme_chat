@@ -102,6 +102,7 @@ const AddMessage = (props) => {
 				onKeyPress={sendMessages}
 				onChange={handleChangeYoutubeSearch}
 				type="text"
+				placeholder="/youtube"
 				ref={(node) => {
 					input = node
 				}}
