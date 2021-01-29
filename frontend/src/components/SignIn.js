@@ -49,9 +49,9 @@ const SignIn = ({ setIsLogIn }) => {
                 Sign in
             </div>
             <div className="box">
-
+                {/* Input nick name */}
                 <div className="input-group">
-                    <label htmlFor="username">Nick name</label>
+                    <label htmlFor="nickname">Nick name</label>
                     <input
                         className="login-input"
                         placeholder="Nick name"
@@ -61,8 +61,9 @@ const SignIn = ({ setIsLogIn }) => {
                         }}
                     />
                 </div>
+                {/* Input password */}
                 <div className="input-group">
-                    <label htmlFor="email">Password</label>
+                    <label htmlFor="password">Password</label>
                     <input
                         className="login-input"
                         placeholder="Password"
@@ -72,6 +73,7 @@ const SignIn = ({ setIsLogIn }) => {
                         }}
                     />
                 </div>
+                {/* Input repeat password */}
                 <div className="input-group">
                     <label htmlFor="password">Repeat password</label>
                     <input
@@ -83,6 +85,7 @@ const SignIn = ({ setIsLogIn }) => {
                         }}
                     />
                 </div>
+                {/* Button to signin */}
                 <button onClick={createUser} className="login-btn">Sign In</button>
             </div>
         </div>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // import modules
 import LogIn from './LogIn';
 import SignIn from './SignIn';
-import '../styles/Register.css'
+import '../styles/Register.css';
 
 /**
  * User register component, store the login and the signin component
@@ -30,6 +30,7 @@ const Register = () => {
     return (
         <div className="root-container">
             <div className="box-controller">
+                {/* Choose Login */}
                 <div
                     className={"controller " + (isLogIn
                         ? "selected-controller"
@@ -37,6 +38,7 @@ const Register = () => {
                     onClick={changeToLogIn}>
                     Log in
                 </div>
+                {/* Choose Signin */}
                 <div
                     className={"controller " + (!isLogIn
                         ? "selected-controller"
@@ -45,6 +47,7 @@ const Register = () => {
                     Sign in
                 </div>
             </div>
+            {/* Show login or signin */}
             <div className="box-container">
                 {isLogIn ?
                     <LogIn setIsLogIn={setIsLogIn} /> :

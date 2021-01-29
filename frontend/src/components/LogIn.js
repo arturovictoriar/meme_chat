@@ -45,9 +45,9 @@ const LogIn = ({ setIsLogIn }) => {
                 Log in
             </div>
             <div className="box">
-
+                {/* Input nick name*/}
                 <div className="input-group">
-                    <label htmlFor="username">Nick name</label>
+                    <label htmlFor="nickname">Nick name</label>
                     <input
                         className="login-input"
                         placeholder="Nick name"
@@ -57,6 +57,7 @@ const LogIn = ({ setIsLogIn }) => {
                         }}
                     />
                 </div>
+                {/* Input user password */}
                 <div className="input-group">
                     <label htmlFor="password">Password</label>
                     <input
@@ -68,7 +69,7 @@ const LogIn = ({ setIsLogIn }) => {
                         }}
                     />
                 </div>
-
+                {/* Button to login */}
                 <button onClick={checkUser} className="login-btn">Log in</button>
             </div>
         </div>
