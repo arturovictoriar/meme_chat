@@ -1,6 +1,7 @@
 // Import libraries
 import React from 'react';
 import propTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
 
 /**
  * User message text input
@@ -96,29 +97,40 @@ const AddMessage = (props) => {
 	}
 
 	return (
-		<section id="new-message">
+		<Grid container className="input_message">
 			{/* Input text box */}
-			<input
-				onKeyPress={sendMessages}
-				onChange={handleChangeYoutubeSearch}
-				type="text"
-				ref={(node) => {
-					input = node
-				}}
-			/>
-			{/* Videos Suggestion */}
-			<div id={props.status === true ? "show_suggestions" : "hide_suggestions"}>
-				<ul>
-					{/* print all the videos found */}
-					{props.videos.map((video, i) => (
-						video.error ? <li>{video.error}</li> :
-							<li key={i} onClick={() => sendVideo(video)}>
+			<Grid item xs={12}>
+				<input
+					onKeyPress={sendMessages}
+					onChange={handleChangeYoutubeSearch}
+					type="text"
+					placeholder="/youtube"
+					ref={(node) => {
+						input = node
+					}}
+				/>
+			</Grid>
+			{/* Show the suggestion */}
+			<Grid container className="input_message"
+			id={(props.status === true && props.videos.length > 0) ? "show_suggestions" : "hide_suggestions"}>
+				{/* print all the videos found */}
+				{(props.videos.length > 0 && props.videos[0].error) ?
+					<Grid item xs={12}>
+						{props.videos.error}
+					</Grid> :
+					props.videos.map((video, i) => (
+						<Grid container key={i} onClick={() => sendVideo(video)}>
+							<Grid item xs={2}>
 								<img src={video.snippet.thumbnails.default.url} alt="video"></img>
-								{video.snippet.title}</li>
+							</Grid>
+							<Grid item xs={9}>
+								{video.snippet.title}
+							</Grid>
+						</Grid>
 					))}
-				</ul>
-			</div>
-		</section>
+
+			</Grid>
+		</Grid>
 	)
 }
 // Connect the component with redux and notify me if a parameter not matches its type

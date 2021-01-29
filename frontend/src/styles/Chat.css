@@ -1,0 +1,48 @@
+/*The chat module*/
+#chat-container {
+    padding: 1% 3% 3% 3%;
+}
+
+/*User input message*/
+input,textarea {
+    width : 100%;
+    display : block;
+}
+
+.input_message {
+    padding: 2%;
+}
+
+/*Styles for youtube sugestions*/
+#hide_suggestions {
+    display: none;
+}
+#show_suggestions {
+    display: initial;
+}
+
+/*size logo*/
+#size_logo {
+    height: 70px;
+    width: 70px;
+}
+
+/*highlight*/
+#blue_color {
+    color: #70a1ff;
+}
+
+/*scroll list*/
+#scroll_list {
+    height: 400px;
+	width: 100%;
+	position: relative;
+	overflow: auto;
+	max-height: 400px;
+}
+
+/*Users conected border*/
+#borderRight500 {
+    border-right: 1px solid #e0e0e0;
+	padding: 0px;
+}

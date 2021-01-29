@@ -10,7 +10,7 @@ import { getInChat } from '../redux/initialization/initialize_socket';
  * Log in component
  * @param {object} param0 parent state
  */
-const LogIn = ({setIsLogIn}) => {
+const LogIn = ({ setIsLogIn }) => {
     const history = useHistory();
     let inputNick;
     let inputPassword;
@@ -39,35 +39,39 @@ const LogIn = ({setIsLogIn}) => {
         e.preventDefault();
     }
 
-    /**
-     * Set a flag to change from login to signin
-     * @param {object} e event
-     */
-    const changeToSingIn = (e) => {
-        setIsLogIn(false);
-    }
-
     return (
-        <div >
-            <h1 >Log In</h1>
-            <div>
-                <input
-                    placeholder="Name"
-                    type="text"
-                    ref={(node) => {
-                        inputNick = node
-                    }}
-                />
-                <input
-                    placeholder="Password"
-                    type="password"
-                    ref={(node) => {
-                        inputPassword = node
-                    }}
-                />
+        <div className="inner-container">
+            <div className="header">
+                Log in
             </div>
-            <button type="submit" onClick={checkUser}>Log In</button>
-            <button type="submit" onClick={changeToSingIn}>Sign In</button>
+            <div className="box">
+                {/* Input nick name*/}
+                <div className="input-group">
+                    <label htmlFor="nickname">Nick name</label>
+                    <input
+                        className="login-input"
+                        placeholder="Nick name"
+                        type="text"
+                        ref={(node) => {
+                            inputNick = node
+                        }}
+                    />
+                </div>
+                {/* Input user password */}
+                <div className="input-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        className="login-input"
+                        placeholder="Password"
+                        type="password"
+                        ref={(node) => {
+                            inputPassword = node
+                        }}
+                    />
+                </div>
+                {/* Button to login */}
+                <button onClick={checkUser} className="login-btn">Log in</button>
+            </div>
         </div>
     )
 }
