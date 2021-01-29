@@ -74,7 +74,7 @@ body,
     margin-bottom: 17px;
     /* margin-left: 35px; */
     /* margin-right: 35px; */
-    /*font-family: "Press Start 2P";*/
+    /*font-family: "Roboto", "Helvetica", "Arial", sans-serif;*/
     font-size: 22px;
     border-bottom: 2px solid var(--blue_theme);
 }
@@ -94,7 +94,7 @@ body,
 
 /*Label*/
 .login-label {
-    font-family: "Press Start 2P";
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 20px;
     font-weight: 600;
     padding-left: 5px;
@@ -107,7 +107,7 @@ body,
     border: 1px solid var(--blue_theme);
     transition: border 0.4s ease-out;
     padding: 13px;
-    font-family: "Press Start 2P";
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 19px;
     color: #3e3e42;
     background: rgba(15, 15, 15, 0.01);
@@ -124,7 +124,7 @@ body,
 
 /*Input Placeholder*/
 .login-input::placeholder {
-    font-family: "Press Start 2P";
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 16px; /* color: rgba(46, 213, 116, 0.839); */
     color: rgba(15, 15, 15, 0.4);
 }
@@ -135,7 +135,7 @@ body,
     border: 0;
     font-size: 18px;
     border-radius: 3px;
-    font-family: "Press Start 2P";
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     background-color: rgba(15, 15, 15, 0.03);
     margin-top: 20px;
     border: 2px solid #417cef;
