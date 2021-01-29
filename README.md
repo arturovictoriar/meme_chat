@@ -8,6 +8,8 @@ Meme chat is an Internet Relay Chat using Node.js. This service lets you communi
 
 ## Visuals :camera:
 
+### ![Meme chat](assets/login-meme-chat.png)
+### ![Meme chat](assets/signin-meme-chat.png)
 ### ![Meme chat](assets/messages-meme-chat.png)
 ### ![Meme chat](assets/youtube-meme-chat.png)
 ### ![Meme chat](assets/send-youtube-meme-chating.png)
