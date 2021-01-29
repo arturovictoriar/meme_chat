@@ -63,7 +63,7 @@ LinkedIn:
 
 ## Project status :white_check_mark:
 
-This is an MVP and it handles just 1 channel. It does not reconnect automaticly. The number of message per second is depend on your system.
+This is an MVP and it handles just 1 channel. It does not reconnect automaticly. The number of message per second is depend on your system. It does not handle db.
 
 ## Author :black_nib:
 

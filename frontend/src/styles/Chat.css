@@ -10,7 +10,7 @@ input,textarea {
 }
 
 .input_message {
-    padding: 2%;
+    padding: 1.5%;
 }
 
 /*Styles for youtube sugestions*/
@@ -45,4 +45,16 @@ input,textarea {
 #borderRight500 {
     border-right: 1px solid #e0e0e0;
 	padding: 0px;
+}
+
+/*Input*/
+.login-input {
+    height: 2.1em;
+    border-radius: 3px;
+    border: 1px solid #70a1ff;
+    transition: border 0.4s ease-out;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 19px;
+    color: #3e3e42;
+    background: rgba(15, 15, 15, 0.01);
 }
