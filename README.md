@@ -19,7 +19,8 @@ In Ubuntu:
 - Install node.js and npm:
 
 ```console
-foo@bar:~$ sudo apt install node npm -y
+foo@bar:~$ sudo apt update
+foo@bar:~$ sudo apt install nodejs npm -y
 ```
 
 - Inside the meme-chat folder go to the backend folder and execute the index.js:
