@@ -43,42 +43,51 @@ const SignIn = ({ setIsLogIn }) => {
         e.preventDefault();
     }
 
-    /**
-     * Set a flag to change from signin to login
-     * @param {object} e event
-     */
-    const changeToLogIn = (e) => {
-        setIsLogIn(true);
-    }
-
     return (
-        <div >
-            <h1 >Sign In</h1>
-            <div>
-                <input
-                    placeholder="Name"
-                    type="text"
-                    ref={(node) => {
-                        inputNick = node
-                    }}
-                />
-                <input
-                    placeholder="Password"
-                    type="password"
-                    ref={(node) => {
-                        inputPassword1 = node
-                    }}
-                />
-                <input
-                    placeholder="Repeat Password"
-                    type="password"
-                    ref={(node) => {
-                        inputPassword2 = node
-                    }}
-                />
+        <div className="inner-container">
+            <div className="header">
+                Sign in
             </div>
-            <button onClick={createUser} type="submit">Sign In</button>
-            <button onClick={changeToLogIn} type="submit">Log In</button>
+            <div className="box">
+                {/* Input nick name */}
+                <div className="input-group">
+                    <label htmlFor="nickname">Nick name</label>
+                    <input
+                        className="login-input"
+                        placeholder="Nick name"
+                        type="text"
+                        ref={(node) => {
+                            inputNick = node
+                        }}
+                    />
+                </div>
+                {/* Input password */}
+                <div className="input-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        className="login-input"
+                        placeholder="Password"
+                        type="password"
+                        ref={(node) => {
+                            inputPassword1 = node
+                        }}
+                    />
+                </div>
+                {/* Input repeat password */}
+                <div className="input-group">
+                    <label htmlFor="password">Repeat password</label>
+                    <input
+                        className="login-input"
+                        placeholder="Repeat password"
+                        type="password"
+                        ref={(node) => {
+                            inputPassword2 = node
+                        }}
+                    />
+                </div>
+                {/* Button to signin */}
+                <button onClick={createUser} className="login-btn">Sign In</button>
+            </div>
         </div>
     )
 }
