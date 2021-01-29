@@ -25,14 +25,14 @@ foo@bar:~$ sudo apt update
 foo@bar:~$ sudo apt install nodejs npm -y
 ```
 
-- Inside the meme-chat folder go to the backend folder and execute the index.js:
+- Inside the meme-chat folder go to the backend folder and install all the needed dependencies:
 
 ```console
 foo@bar:~/meme-chat$ cd backend
 foo@bar:~/meme-chat/backend$ npm install
 ```
 
-- Go back to the meme_chat folder and go to frontend folder and execute the index.js:
+- Go back to the meme_chat folder and go to frontend folder and install all the needed dependencies:
 
 ```console
 foo@bar:~/meme-chat$ cd frontend
@@ -41,19 +41,19 @@ foo@bar:~/meme-chat/frontend$ npm install
 
 ## Usage :open_file_folder:
 
-- Go inside the backend folder and executen the backend service:
+- Go inside the backend folder and execute the backend service:
 
 ```console
 foo@bar:~/meme-chat/backend$ npm start
 ```
 
-- Go inside the frontend folder and executen the frontend service:
+- Go inside the frontend folder and execute the frontend service:
 
 ```console
 foo@bar:~/meme-chat/frontend$ npm start
 ```
-- Note1: the backend runs in port 5000.
-- Note2: the frontend runs in port 3000.
+- Note1: the backend runs in port 5000 by default.
+- Note2: the frontend runs in port 3000 by default.
 
 ## Support :email:
 
@@ -63,7 +63,7 @@ LinkedIn:
 
 ## Project status :white_check_mark:
 
-This is the first MVP for this projects and it handles 1 channel. It does not reconnect automaticly.
+This is an MVP and it handles just 1 channel. It does not reconnect automaticly. The number of message per second is depend on your system.
 
 ## Author :black_nib:
 
