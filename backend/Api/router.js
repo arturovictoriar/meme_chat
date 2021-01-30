@@ -1,7 +1,7 @@
 // Import libraries
 const express = require("express");
 // Import modules
-const {checkNickPassword, createUser} = require('./validUsers');
+const { checkNickPassword, createUser } = require('./validUsers');
 
 // Create a router module
 const router = express.Router();
@@ -22,14 +22,14 @@ router.get("/", (req, res) => {
  */
 router.post('/logIn', function (req, res) {
   const body = req.body;
-
+  const permission = checkNickPassword(body.name, body.pw);
   // if the user exist in db and is already disconnected,
   // allow the permission to get in to chat server
-  if (checkNickPassword(body.name, body.pw)) {
-    return (res.send({ok: true}).status(200));
+  if (permission.ok) {
+    return (res.send(permission).status(200));
   }
   // else, deny the permission to get in the chat server
-  return (res.send({ok: false}).status(401));
+  return (res.send(permission).status(401));
 })
 
 /**
@@ -39,13 +39,13 @@ router.post('/logIn', function (req, res) {
  */
 router.post('/signIn', function (req, res) {
   const body = req.body;
-
+  const permission = createUser(body.name, body.pw);
   // if the user doesnot exist in db, created the user
-  if (createUser(body.name, body.pw)) {
-    return (res.send({ok: true}).status(201));
+  if (permission.ok) {
+    return (res.send(permission).status(201));
   }
   // else, do not create it
-  return (res.send({ok: false}).status(400));
+  return (res.send(permission).status(400));
 })
 
 // make the router module public
