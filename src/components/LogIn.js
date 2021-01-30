@@ -28,15 +28,25 @@ const LogIn = ({ setIsLogIn }) => {
             body: JSON.stringify({ name, pw })
         };
         // Look for permission in the API
-        const res = await fetch('https://backend-chating.herokuapp.com/logIn', requestOptions);
-        let permission = await res.json();
+        let network_error = false;
+        const permission = await fetch('https://backend-chating.herokuapp.com/logIn', requestOptions).then(
+			response => {
+				return response.json()
+            }).catch(() => {
+                network_error = true;
+            });
+        if (!permission || network_error) {
+            alert("Log in service disabled");
+            return;
+        }
         // if the user have the permission, allow it to get in the chat server
-        if (name.length > 5 && permission.ok) {
+        if (permission.ok) {
             getInChat(name);
             history.push('/chat');
             return;
         }
         e.preventDefault();
+        alert(permission.message);
     }
 
     return (

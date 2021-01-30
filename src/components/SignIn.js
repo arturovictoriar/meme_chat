@@ -24,21 +24,41 @@ const SignIn = ({ setIsLogIn }) => {
         }
         const name = inputNick.value;
         const pw = sha256(inputPassword1.value).toString(enc);
+
+        if (name.length < 6) {
+            alert("The name should be at least 6 characters long");
+            return;
+        }
+
+        if (inputPassword1.value.length < 6) {
+            alert("The password should be at least 6 characters long");
+            return;
+        }
+
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, pw })
         };
         // Ask to the server to create a new user with the given data
-        const res = await fetch('https://backend-chating.herokuapp.com/SignIn', requestOptions);
-        let created = await res.json();
+        let network_error = false;
+        const created = await fetch('https://backend-chating.herokuapp.com/SignIn', requestOptions).then(
+			response => {
+				return response.json()
+            }).catch(() => {
+                network_error = true;
+            });
+        if (!created || network_error) {
+            alert("Sign in service disabled");
+            return;
+        };
         // if the user was created, alert to the user
-        if (created.ok === true) {
-            alert("User created");
+        if (created.ok) {
+            alert(created.message);
         }
         // else, alert to the user it was impossible to create a new user
         else {
-            alert("User NOT created");
+            alert(created.message);
         }
         e.preventDefault();
     }
