@@ -1,5 +1,5 @@
 // Import libraries
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import propTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
@@ -11,6 +11,14 @@ import Message from './Message';
  * @param {Object} param0 state parameters for messages
  */
 const MessagesList = ({ messages }) => {
+	const messagesEndRef = useRef(null);
+
+	// scroll to the botton of the messages if there are new messages
+	const scrollToBottom = () => {
+		messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+	};
+
+	useEffect(scrollToBottom, [messages]);
 
 	return (
 		<Paper id="scroll_list">
@@ -22,6 +30,7 @@ const MessagesList = ({ messages }) => {
 						{...message}
 					/>
 				))}
+				<div ref={messagesEndRef} />
 			</List>
 		</Paper>
 	)

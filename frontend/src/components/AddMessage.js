@@ -2,6 +2,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
+// Import modules
+import { userName } from '../redux/initialization/initialize_socket';
 
 /**
  * User message text input
@@ -50,6 +52,10 @@ const AddMessage = (props) => {
 	const searchYoutubeVideo = () => {
 		let ysearch = "";
 
+		if (userName === "") {
+			props.dispatch_get([{ error: "Youtube service disabled" }]);
+			return;
+		}
 		ysearch = props.memeSearch.replace(" ", "%20");
 		fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${ysearch}&type=video&videoEmbeddable=true&key=AIzaSyBEwL4HbjmYB7kqJYZTaWAtXNSpk7pWPsk`).then(
 			response => {
@@ -61,7 +67,7 @@ const AddMessage = (props) => {
 				data => {
 					props.dispatch_get(data.items);
 				}).catch(() => {
-					props.dispatch_get([{ error: "Service disabled" }]);
+					props.dispatch_get([{ error: "Youtube service disabled" }]);
 				});
 	}
 
@@ -101,6 +107,7 @@ const AddMessage = (props) => {
 			{/* Input text box */}
 			<Grid item xs={12}>
 				<input
+					className="login-input"
 					onKeyPress={sendMessages}
 					onChange={handleChangeYoutubeSearch}
 					type="text"
@@ -116,7 +123,7 @@ const AddMessage = (props) => {
 				{/* print all the videos found */}
 				{(props.videos.length > 0 && props.videos[0].error) ?
 					<Grid item xs={12}>
-						{props.videos.error}
+						<p>{props.videos[0].error}</p>
 					</Grid> :
 					props.videos.map((video, i) => (
 						<Grid container key={i} onClick={() => sendVideo(video)}>
